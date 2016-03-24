@@ -3,7 +3,7 @@ header('Content-Type: text/html; charset=utf-8');
 extract($_POST); // Sayfaya Gelen post verileri okunuyor
 
 
-$dosya = fopen("dosya/mucx.json","w+"); // dosya.txt kaydediliyor
+$dosya = fopen("dosya/kelimelist.json","w+"); // dosya.txt kaydediliyor
 //$str = mb_convert_encoding($str, "SJIS");
 /*$asc = array("Ãœ","ÅŸ","ÄŸ","Ã‡","Ä°","Ã–","Ã¼","ÅŸ","ÄŸ","Ã§","Ä±","Ã¶");
 $krt = array("Ü","Þ","Ð","Ç","Ý","Ö","ü","þ","ð","ç","ý","ö");
@@ -21,6 +21,7 @@ $text = json_encode($son_txt);
 //$text = unicode_decode($text);
 fwrite($dosya, $text); // Gelen post verisi txt içerisine kaydediliyor
 fclose($dosya); // Dosya kapandy
-//exec("java -jar JavaApplication36.jar", $output); // jar dosyasy çaly?tyryyor sonuc $output dizisine atylyyor
+exec("java -jar zemberek_pro.jar", $output); // jar dosyasy çaly?tyryyor sonuc $output dizisine atylyyor
+echo "MucX";
 //print_r($output); // Ekrana çyky? dizisi yazylyyor
 ?>

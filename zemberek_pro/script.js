@@ -1,0 +1,6 @@
+if (LAST_SELECTION) {
+    alert(LAST_SELECTION);
+}
+if (LAST_ELEMENT) {
+   alert(LAST_SELECTION);
+}
