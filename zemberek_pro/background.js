@@ -1,16 +1,28 @@
-ara(document.body);
-reklendir();
-function reklendir(){
-		$(document).ready(function(){
-			$.post("http://localhost/chorme/chorme/m/zemberek_pro/sonuc.php", function(json) {
-				var jjs = $.parseJSON(json);
-				for (var i = 0; i < jjs.length; i++){
-					v = v.replace(/\bjjs[i]\b/g,'rep#'+jjs[i]+'#rep');
+yuklen();
+function yuklen(){
+	$(document).ready(function(){
+			$.post("http://localhost/m/zemberek_pro/sonuc.php",{},function(json,sc) {
+				if(sc=="success"){
+					ara(document.body,json);
+					reklendir(json);
 				}
 			});
 		});
+
 }
-function ara(node)  
+
+
+function reklendir(json){
+				
+			var njs = json.split("|");
+			for(var i = 0;i<njs.length;i++){
+				var d = njs[i];
+				document.body.innerHTML = document.body.innerHTML.replace(RegExp("rep#"+d+"#rep","gi"),'<font style="background:#c6ff00; color:#000;"><b>'+d+'</b></font>');
+
+			//	v = v.replace(d,function myFunction(x){return x = "rep#"+x+"#rep";});
+			}	
+}
+function ara(node,json)  
 {
 	var child, next;
 	switch (node.nodeType)  
@@ -22,29 +34,31 @@ function ara(node)
 			while (child) 
 			{
 				next = child.nextSibling; 
-				ara(child);
+				ara(child,json);
 				child = next;
 			}
 			break;
 		case 3: 
-			degistir(node);
+			degistir(node,json);
 		break;
 	}
 }
-//document.body.innerHTML = document.body.innerHTML.replace(/\bmadde\b/g, '<span class="f">aaaaaaaaa</span>');
-function degistir(textNode) 
+function degistir(textNode,json) 
 {
 	var v = textNode.nodeValue;
-
-	//v = v.replace(/\bmadde\b/g,'rep#NOB#rep');
-			$(document).ready(function(){
-			$.post("http://localhost/chorme/chorme/m/zemberek_pro/sonuc.php", function(json) {
-				var jjs = $.parseJSON(json);
-				for (var i = 0; i < jjs.length; i++){
-					v = v.replace(/\bjjs[i]\b/g,'rep#'+jjs[i]+'#rep');
-				}
-			});
-		});
+//	v = v.replace(/\bmadde\b/g,'<span>madde</span>');
+		
+		/**/
+			//json = "/müzik/gi"; 
+				//console.log(json);
+			/*var njs = json.split("|");
+			var i = 0;
+			for(i = 0;i<njs.length;i++){
+				var d =njs[i];*/
+				v = v.replace(RegExp(json,"gi"),function myFunction(x){return x = "rep#"+x+"#rep";});
+			//}		
+		//console.log(pps);
+		
  	// v.replaceWith(v.replace(/\bmadde\b/g,'<a href="http://google.com">Google</a>'));
 
 	/*
@@ -77,7 +91,7 @@ element.innerHTML = element.innerHTML.replace(
 
 function ayikla(txt){
 	$(document).ready(function(){
-		$.post("http://localhost/chorme/chorme/m/zemberek_pro/islem.php",{text:txt},function(sonuc,sc){
+		$.post("http://localhost/m/zemberek_pro/islem.php",{text:txt},function(sonuc,sc){
 			if(sc=="success"){
 				chrome.tabs.getSelected(null, function(tab) {
 				  var code = 'window.location.reload();';

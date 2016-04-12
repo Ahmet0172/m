@@ -8,12 +8,17 @@
 	$max_fre = array();
 	$max_key = array();
 	$i = 0;
+	
 	foreach ($frekanslar as $key => $value) {
-		$max_fre[] = $kelimeler[$key];
+		//$max_fre[] = $kelimeler[$key];
+		$snc.=$kelimeler[$key]."|";
 		$i++;
+		
 		if($i==5)
 			break;
 	}
-	$js = json_encode($max_fre);
-	echo $js;
+	$snc = substr($snc,0,-1);
+	//$js = json_encode($max_fre);
+	//echo $js;
+	echo $snc;
 ?>
