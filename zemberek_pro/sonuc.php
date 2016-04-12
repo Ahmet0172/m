@@ -4,7 +4,7 @@
 	$frekanslar = array_column($analiz["Kelimeler"], 'frekans');
 	$kelimeler = array_column($analiz["Kelimeler"], 'kelime');
 	arsort($frekanslar);
-	print_r($frekanslar);
+	//print_r($frekanslar);
 	$max_fre = array();
 	$max_key = array();
 	$i = 0;
@@ -14,6 +14,6 @@
 		if($i==5)
 			break;
 	}
-	echo "<br>";	
-	print_r($max_fre);
+	$js = json_encode($max_fre);
+	echo $js;
 ?>

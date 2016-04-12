@@ -22,6 +22,6 @@ $text = json_encode($son_txt);
 fwrite($dosya, $text); // Gelen post verisi txt içerisine kaydediliyor
 fclose($dosya); // Dosya kapandy
 exec("java -jar zemberek_pro.jar", $output); // jar dosyasy çaly?tyryyor sonuc $output dizisine atylyyor
-echo "MucX";
+echo "sona geldik";
 //print_r($output); // Ekrana çyky? dizisi yazylyyor
 ?>

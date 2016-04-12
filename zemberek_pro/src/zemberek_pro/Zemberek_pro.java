@@ -4,12 +4,17 @@
  * and open the template in the editor.
  */
 package zemberek_pro;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
 import net.zemberek.erisim.Zemberek;
 import net.zemberek.tr.yapi.TurkiyeTurkcesi;
 import net.zemberek.yapi.Kelime;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -78,9 +83,26 @@ public class Zemberek_pro {
       }
       WordFullList.put("Kelimeler",kelimelerJson);
       WordFullList.put("Kokler",koklerJson);
-      FileWriter file = new FileWriter("dosya/analiz.json");
+      /*
+      File fileDir = new File("c:\\temp\\test.txt");
+			
+		Writer out = new BufferedWriter(new OutputStreamWriter(
+			new FileOutputStream(fileDir), "UTF8"));
+
+		out.append("Website UTF-8").append("\r\n");
+		out.append("?? UTF-8").append("\r\n");
+		out.append("??????? UTF-8").append("\r\n");
+		out.flush();
+		out.close();
+      */
+       File fileDir = new File("dosya/analiz.json");
+       Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileDir), "UTF8"));
+       out.write(WordFullList.toJSONString());
+       out.flush();
+	out.close();
+    /*  FileWriter file = new FileWriter("dosya/analiz.json");
       file.write(WordFullList.toJSONString());
       file.flush();
-      file.close();
+      file.close(); */
     }
 }
