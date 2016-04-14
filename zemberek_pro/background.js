@@ -1,7 +1,7 @@
 yuklen();
 function yuklen(){
 	$(document).ready(function(){
-			$.post("http://localhost/m/zemberek_pro/sonuc.php",{},function(json,sc) {
+			$.post("http://localhost/chorme/chorme/m/zemberek_pro/sonuc.php",{},function(json,sc) {
 				if(sc=="success"){
 					ara(document.body,json);
 					reklendir(json);
@@ -91,7 +91,7 @@ element.innerHTML = element.innerHTML.replace(
 
 function ayikla(txt){
 	$(document).ready(function(){
-		$.post("http://localhost/m/zemberek_pro/islem.php",{text:txt},function(sonuc,sc){
+		$.post("http://localhost/chorme/chorme/m/zemberek_pro/islem.php",{text:txt},function(sonuc,sc){
 			if(sc=="success"){
 				chrome.tabs.getSelected(null, function(tab) {
 				  var code = 'window.location.reload();';
